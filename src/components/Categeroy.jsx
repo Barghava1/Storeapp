@@ -2,6 +2,7 @@ import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { additem } from "../utils/cartslice";
+import { addfav } from "../utils/favslice";
 
 const Category = () => {
   const { categoryName } = useParams();
@@ -15,6 +16,15 @@ const Category = () => {
     }
     dispatch(additem(product));
     console.log("Added to Cart:", product);
+  };
+  const handlefav = (product) => {
+    if (!product || !product.id) {
+      console.error("Invalid product:", product); // Debugging log
+      return;
+    }
+    window.alert("Item added to Cart");
+    dispatch(addfav(product));
+    // console.log("Added to Cart:", product);
   };
   
   useEffect(() => {
@@ -44,6 +54,8 @@ const Category = () => {
               <img src={product.image} alt={product.title} className="h-40 mx-auto" />
               <h3 className="mt-2 text-lg font-semibold">{product.title}</h3>
               <p className="text-gray-600">${product.price}</p>
+              <button className="w-full mt-3 p-2 bg-red-500 text-white rounded-lg" onClick={()=>handlefav(product)}>
+                Add to Favourite</button>
               <button className="mt-3 w-full bg-blue-500 text-white py-2 rounded-md hover:bg-blue-600 transition" onClick={()=>handleitem(product)}>
                 Add to Cart
               </button>

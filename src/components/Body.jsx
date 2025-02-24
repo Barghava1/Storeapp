@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 import { additem } from "../utils/cartslice";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
+import { addfav } from "../utils/favslice";
 
 const Body = () => {
   
@@ -14,9 +15,14 @@ const Body = () => {
 
   const handleAdd = (product) => {
     dispatch(additem(product));
+    window.alert("Item added to the cart");
  
   
   };
+  const handlefav=(product)=>{
+    dispatch(addfav(product))
+    window.alert("Your Item is added to favourites");
+  }
 
   // Fetch data on component mount
   useEffect(() => {
@@ -63,6 +69,8 @@ const Body = () => {
             </h2>
             <p className="text-gray-600 text-center">Price: ${product.price}</p>
             <p className="text-gray-600 text-center">Rating: {product.rating.rate}</p>
+            <button className="w-full bg-red-500 mt-3 text-white p-2 cursor-pointer rounded-lg" onClick={()=> handlefav(product)}>
+              Add to Favourite</button>
             
         <button
               className="mt-3 w-full bg-blue-500 text-white py-2 rounded-md hover:bg-blue-600 transition cursor-pointer"

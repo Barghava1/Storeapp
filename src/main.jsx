@@ -7,6 +7,7 @@ import Body from "./components/Body.jsx";
 import Cart from "./components/Cart.jsx";
 import Category from "./components/Categeroy.jsx";
 import Error from "./components/Error.jsx";
+import Fav from "./components/Fav.jsx";
 const approute = createBrowserRouter([
   {
     path: "/", // Main route
@@ -26,6 +27,10 @@ const approute = createBrowserRouter([
         path:"/category/:categoryName",
         element:<Category/>
       },
+      {
+        path:"/fav",
+        element:<Fav/>
+      }
      
      
     ],

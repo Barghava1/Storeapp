@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 
 const Header = () => {
     const cart = useSelector((store) => store.cart.items);
+    const fav=useSelector((store)=>store.fav.items);
   return (
     <header className="bg-green-400 shadow-2xl rounded-lg p-4">
       <div className="container mx-auto flex justify-between items-center">
@@ -27,9 +28,9 @@ const Header = () => {
           <span className="hover:text-blue-500 cursor-pointer">
             <MagnifyingGlassIcon className="h-6 w-6" />
           </span>
-          <span className="hover:text-red-500 cursor-pointer">
+       <Link to="/fav"><span className="hover:text-red-500 cursor-pointer">
             <HeartIcon className="h-6 w-6" />
-          </span>
+          </span></Link>  
           <span className="hover:text-blue-500 cursor-pointer">
             <UserIcon className="h-6 w-6" />
           </span>
